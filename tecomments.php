@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: TeComments for WordPress
+ * Plugin Name: TeComments
  * Plugin URI: https://github.com/uptimizt/telegram-comments-u7
- * Description: Telegram Comments for WordPress by @uptimizt - easy add comments from Telegram to own site
+ * Description: Telegram Comments for WordPress by @uptimizt - easy add comments from Telegram to own site by shortcode <code>[telegram-comments]</code>
  * Author: uptimizt
  * Author URI: https://github.com/uptimizt/
  * Version: 1.0
@@ -13,6 +13,8 @@
 
 namespace TeComments;
 
+defined( 'ABSPATH' ) || exit;
+
 final class TelegramComments {
 
     public static $settings_sections_group = 'u7_telegram_comments_settings';
@@ -20,6 +22,12 @@ final class TelegramComments {
     public static $settings_page_slug = 'telegram-comments-settings-u7';
 
     public static function init(){
+
+        add_action('plugins_loaded', function (){
+            require_once __DIR__ . '/inc/Widget.php';
+            require_once __DIR__ . '/inc/SidePanel.php';
+        });
+
         add_action('admin_init', [__CLASS__, 'add_settings']);
 
         add_action('admin_menu', function(){
@@ -36,6 +44,9 @@ final class TelegramComments {
 
         add_filter( "plugin_action_links_" . plugin_basename( __FILE__ ), [__CLASS__, 'add_settings_link_to_plugin_list'] );
 
+        add_action( 'widgets_init', function(){
+            register_widget( 'TeComments\Widget' );
+        });
 
     }
 
@@ -158,14 +169,16 @@ final class TelegramComments {
         register_setting(self::$settings_options_group, $option_tc_height);
         add_settings_field(
             $id = $option_tc_height,
-            $title = __('Limit display comments'),
+            $title = __('Height display comments'),
             $callback = function($args){
                 printf(
                     '<input type="number" name="%s" value="%s" />',
                     $args['key'], $args['value']
                 );
-
-                printf('<p><small>%s</small></p>', __('If 0 - height equal auto, else set count in px'));
+                printf(
+                    '<p><small>%s</small></p>',
+                    __('If 0 - the height is auto, otherwise the height in pixels will be set')
+                );
             },
             $page = self::$settings_sections_group,
             $section = 'u7_tc_general_settings',
@@ -186,7 +199,10 @@ final class TelegramComments {
                     $args['key'], checked(1, $args['value'], false)
                 );
 
-                printf('<p><small>%s</small></p>', __('If no select the option, we have lost data after change url'));
+                printf(
+                    '<p><small>%s</small></p>',
+                    __('If you do not select an option, we may lose data after changing the URL')
+                );
             },
             $page = self::$settings_sections_group,
             $section = 'u7_tc_general_settings',
