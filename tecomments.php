@@ -25,6 +25,7 @@ final class TelegramComments {
 
         add_action('plugins_loaded', function (){
             require_once __DIR__ . '/inc/Widget.php';
+            require_once __DIR__ . '/inc/AfterPosts.php';
             require_once __DIR__ . '/inc/SidePanel.php';
         });
 
