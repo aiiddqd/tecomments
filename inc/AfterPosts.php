@@ -48,7 +48,6 @@ final class AfterPosts
                     '<input type="checkbox" name="%s" value="1" %s/>',
                     $args['key'], checked(1, $args['value'], false)
                 );
-                printf('<p>%s</p>', __('Option in development'));
             },
             $page = 'u7_telegram_comments_settings',
             $section = 'u7_tc_general_settings',

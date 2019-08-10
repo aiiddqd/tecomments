@@ -5,7 +5,7 @@
  * Description: Telegram Comments for WordPress by @uptimizt - easy add comments from Telegram to own site by shortcode <code>[telegram-comments]</code>
  * Author: uptimizt
  * Author URI: https://github.com/uptimizt/
- * Version: 1.0
+ * Version: 1.1
  * Text Domain: tecomments
  * Domain Path: /languages
  * License: MIT
