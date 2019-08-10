@@ -1,17 +1,17 @@
 <?php
 /**
- * Plugin Name: Telegram Comments for WordPress
+ * Plugin Name: TeComments for WordPress
  * Plugin URI: https://github.com/uptimizt/telegram-comments-u7
  * Description: Telegram Comments for WordPress by @uptimizt - easy add comments from Telegram to own site
  * Author: uptimizt
  * Author URI: https://github.com/uptimizt/
  * Version: 1.0
- * Text Domain: tcu7
+ * Text Domain: tecomments
  * Domain Path: /languages
  * License: MIT
  */
 
-namespace U7;
+namespace TeComments;
 
 final class TelegramComments {
 

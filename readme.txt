@@ -1,4 +1,4 @@
-=== Telegram Comments for sites powered by WordPress ===
+=== TeComments for sites powered by WordPress ===
 Contributors: casepress
 Tags: telegram, comments
 Donate link: https://uptimizt.wordpress.com/pay-and-donate/
