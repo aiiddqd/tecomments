@@ -19,3 +19,4 @@ They can also subscribe to comments and get notifications from @DiscussBot.
 1. Download the plugin in wp admin
 2. Activate
 3. Go to Settings / Telegram Comments and follow instructions
+4. Add shortcode [telegram-comments] any place

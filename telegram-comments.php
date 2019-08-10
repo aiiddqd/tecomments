@@ -17,6 +17,7 @@ final class TelegramComments {
 
     public static $settings_sections_group = 'u7_telegram_comments_settings';
     public static $settings_options_group = 'u7_telegram_comments_settings';
+    public static $settings_page_slug = 'telegram-comments-settings-u7';
 
     public static function init(){
         add_action('admin_init', [__CLASS__, 'add_settings']);
@@ -26,7 +27,7 @@ final class TelegramComments {
                 $page_title = 'Telegram Comments',
                 $menu_title = 'Telegram Comments',
                 $capability = 'administrator',
-                $menu_slug = self::$settings_sections_group,
+                $menu_slug = self::$settings_page_slug,
                 $callback = [__CLASS__, 'render_settings']
             );
         });
@@ -42,7 +43,7 @@ final class TelegramComments {
      * add settings link to plugin list
      */
     public static function add_settings_link_to_plugin_list($links){
-        $settings_link = sprintf('<a href="admin.php?page=%s">%s</a>', self::$settings_sections_group, __('Settings'));
+        $settings_link = sprintf('<a href="admin.php?page=%s">%s</a>', self::$settings_page_slug, __('Settings'));
         $support_link = sprintf('<a href="%s" target="_blank">%s</a>', 'https://github.com/uptimizt/telegram-comments-u7/issues', __('Support'));
         array_unshift($links, $support_link);
         array_unshift($links, $settings_link);
