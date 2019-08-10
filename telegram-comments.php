@@ -33,9 +33,25 @@ final class TelegramComments {
 
         add_shortcode('telegram-comments', [__CLASS__, 'render_shortcode']);
 
+        add_filter( "plugin_action_links_" . plugin_basename( __FILE__ ), [__CLASS__, 'add_settings_link_to_plugin_list'] );
+
+
     }
 
+    /**
+     * add settings link to plugin list
+     */
+    public static function add_settings_link_to_plugin_list($links){
+        $settings_link = sprintf('<a href="admin.php?page=%s">%s</a>', self::$settings_sections_group, __('Settings'));
+        $support_link = sprintf('<a href="%s" target="_blank">%s</a>', 'https://github.com/uptimizt/telegram-comments-u7/issues', __('Support'));
+        array_unshift($links, $support_link);
+        array_unshift($links, $settings_link);
+        return $links;
+    }
 
+    /**
+     * render shortcode
+     */
     public static function render_shortcode($args){
         ob_start();
 
