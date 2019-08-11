@@ -123,7 +123,7 @@ final class TelegramComments {
     public static function add_settings(){
         add_settings_section(
             $id = 'u7_tc_general_settings',
-            $title = 'Основные настройки',
+            $title = __('General settings'),
             $callback = '',
             $page = self::$settings_sections_group
         );
